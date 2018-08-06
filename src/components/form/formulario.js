@@ -57,10 +57,12 @@ function getInput(inputs, inputID =""){
 *
 */
 function allValid(inputs, ignoreInvalid){
+	console.log('Ignore invalid set to: ' + ignoreInvalid);
 	if(ignoreInvalid) {
-		console.log('ignoreInvalid is [ true ]');
+		console.log('allValid: returning [ true ]');
 		return true;
 	}
+	console.log('AllValid: Performing Checks');
     let valid = true;
 	inputs.map(e => {
 		/*
@@ -128,7 +130,7 @@ function allValid(inputs, ignoreInvalid){
 	} else {
 		validPassInput.invalid = false;
 	}
-	console.log('Form is valid: ' + valid);
+	console.log('allValid: returning [ '+ valid +' ]');
 	return valid;
 }
 

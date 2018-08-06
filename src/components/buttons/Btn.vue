@@ -7,7 +7,6 @@
 export default {
 	methods: {
 			reset(){
-				console.log('Clicked');
 				this.$emit('doReset', 1);
 		}
 	}

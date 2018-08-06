@@ -16,7 +16,7 @@
 		-->
 
 		<!-- If: input.id is 'Name' -->
-		<div class="input-group mb-3" v-if="isName()">
+		<div class="input-group" v-if="isName()">
 			<input :type="inputValues.type" v-model="inputValues.value" class="form-control form-control-lg" :placeholder="inputValues.placeholder">
 			<div @click="executeName()" class="input-group-append">
 				<span class="input-group-text" id="basic-addon2">Extrair Primeiro Nome</span>
@@ -24,7 +24,7 @@
 		</div>
 
 		<!-- If: input.id is 'Password' -->
-		<div class="input-group mb-3" v-else-if="isPassword()">
+		<div class="input-group" v-else-if="isPassword()">
 			<input :type="inputValues.type" v-model="inputValues.value" class="form-control form-control-lg" :placeholder="inputValues.placeholder">
 			<div class="input-group-append">
 				<span class="input-group-text" @click="hide_show_password()" v-if="inputValues.type == 'password'">Ver Senha</span>
@@ -46,9 +46,10 @@
 <script>
 
 var m = require('./inputContainer.js');
-console.log(m);
 
 export default {
+	name: 'InputContainer',
+
 	props: [
 		'inputValues'
 	],
