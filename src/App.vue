@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<nav class="navbar navbar-dark bg-dark">
-			<div style="height: 80px;">
+			<div style="height: 80px;" @click="restart()">
 				<img class="h-100 pl-5" src="..\data\logo_amarelo.svg" alt="Italian Trulli">
 			</div>
 		</nav>
@@ -9,8 +9,8 @@
 			<!--
 				Show the form, if all input values are not yet valid and the user hasn't clicked 'Submit'.
 			-->
-			<my-form class="pt-5" v-if="!validForm" @click.native="checkChanges()" @submmited="data_information = $event" />
-
+			<!--<my-form class="pt-5" v-if="!validForm" @click.native="checkChanges()" @submmited="data_information = $event" />-->
+			<my-form class="pt-5" v-if="!validForm" @submmited=submit($event) />
 			<!--
 				When user clicks 'Submit', validForm changes state and the form desappears, and the values written in the inputs are shown.
 			-->
@@ -31,18 +31,19 @@ export default {
 	data () {
 		return {
 			validForm: false,
-			info: {},//[{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"}],
+			info: {},
 			data_information: null
 		};
 	},
 
 	methods: {
-		checkChanges: function(){
-			console.log(this.data_information);
-			if(this.data_information != null){
-				this.validForm = true;
-			}
+		submit: function(info){
+			this.data_information = info;
+			this.validForm = true;
 		},
+		restart: function(){
+			this.validForm = false;
+		}
 	},
 
 
