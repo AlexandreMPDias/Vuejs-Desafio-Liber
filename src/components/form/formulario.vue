@@ -23,7 +23,6 @@
 
 <script>
 
-import { EventBus } from '../../eventbus.js'
 import InputContainer from '../input/inputContainer.vue';
 const List = require('collections/list');
 var form = require('./formulario.js');
@@ -75,7 +74,7 @@ export default {
                         list.push({id: e.id, value: e.value});
                     }
                 })
-                EventBus.$emit('submitted', list.toArray());
+                this.$emit('submmited', list.toArray());
             }
         },
     }

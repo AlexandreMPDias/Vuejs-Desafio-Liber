@@ -9,26 +9,19 @@
 			<!--
 				Show the form, if all input values are not yet valid and the user hasn't clicked 'Submit'.
 			-->
-			<my-form class="pt-5" v-if="!validForm" @click.native="checkChanges()" />
+			<my-form class="pt-5" v-if="!validForm" @click.native="checkChanges()" @submmited="data_information = $event" />
 
 			<!--
 				When user clicks 'Submit', validForm changes state and the form desappears, and the values written in the inputs are shown.
 			-->
-			<sbmt-msg :info="info" v-else/>
+			<sbmt-msg :info="data_information" />
 		</div>
 	</div>
 </template>
 
 <script>
-import { EventBus } from './eventbus.js';
 import myForm from './components/form/formulario.vue';
 import submitMsg from './components/submit~message/submitMessage.vue';
-
-var data_information = null;
-
-EventBus.$on('submitted', info => {
-  data_information = info;
-});
 
 export default {
 	components:{
@@ -38,21 +31,19 @@ export default {
 	data () {
 		return {
 			validForm: false,
-			info: {}//[{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"}],
+			info: {},//[{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"},{id: "Abacate",value: "Batata"}],
+			data_information: null
 		};
 	},
 
 	methods: {
 		checkChanges: function(){
-			if(data_information != null){
+			console.log(this.data_information);
+			if(this.data_information != null){
 				this.validForm = true;
 			}
-		}
+		},
 	},
-
-	beforeUpdate() {
-		this.info = data_information;
-	}
 
 
 }
