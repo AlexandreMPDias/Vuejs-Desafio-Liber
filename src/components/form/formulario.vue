@@ -62,6 +62,9 @@ export default {
             });
         },
         submit(){
+            /*
+            *   Checks if all inputs are valid, and send an event to the Global Bus Event.
+            */
             if(form.allValid(this)){
                 let list = new List();
                 let ar = this.array.map( e => {

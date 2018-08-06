@@ -1,7 +1,9 @@
 <template>
     <div class="pt-5">
-        <div class="overlay-background"/> <!-- Attempt to create background -->
-        <div class="overlay-foreground">
+        <!-- Background and Foreground: not yet implemented. -->
+        <!--<div class="overlay-background"/> -->
+        <!--<div class="overlay-foreground"> -->
+        <div>
             <table class="table table-bordered table-hover">
                 <tbody v-for="field in info" :key="field.id">
                     <tr class="text-center">
@@ -26,6 +28,8 @@ export default{
 
 
 <style scoped>
+/*
+NOT WORKING YET
 
 .overlay{
     position: fixed;
@@ -63,6 +67,6 @@ export default{
     background-color: white;
     opacity: 1;
 }
-
+*/
 
 </style>
